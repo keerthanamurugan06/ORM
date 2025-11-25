@@ -34,12 +34,12 @@ Execute Django admin using localhost and create details for 10 entries
 ## PROGRAM
 ```
 admin.py
-
 from django.contrib import admin
-from .models import Product
-admin.site.register(Product)
+from .models import Product,ProductAdmin
+admin.site.register(Product,ProductAdmin)
 
 models.py
+from django.db import models
 from django.contrib import admin
 class Product (models.Model):
     Product_code=models.CharField(primary_key=True, max_length=7)
@@ -49,19 +49,14 @@ class Product (models.Model):
     Manufacture_date=models.DateTimeField()
     Expiredate=models.DateField()
     Discount_of_product=models.IntegerField(max_length=2)
-    
-    class ProductAdmin(admin.ModelAdmin):
-        list_display=('Product_code','Name_of_product','Categories',
-                      'Rate','Manufacture_date',
-                      'Expiredate','Discount_of_product')
+class ProductAdmin(admin.ModelAdmin):
+    list_display=["Product_code","Name_of_product","Categories","Rate","Manufacture_date","Expiredate","Discount_of_product"]
+
 ```
 
 
 # OUTPUT
-![alt text](<Screenshot 2025-11-25 091819.png>)
-
-
-
+![alt text](<Screenshot (18).png>)
 
 
 ## RESULT
